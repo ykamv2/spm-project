@@ -1,0 +1,86 @@
+<div class="community-main row">
+
+    <div class="announcements bg-secondary col-md-3 col-sm-12">
+
+        <h2 class="headings text-white position-fixed bg-dark m-0">Important <br> Announcements</h2>
+        
+        <div class="d-flex w-100 justify-content-end">
+            <button class="btn btn-dark m-1" (click)="onCreatePost('announcement')" *ngIf="sessionData.user_type != 'Employee'">Post Announcements</button>
+        </div>
+
+        <div class="announcements-list">
+            <div style="z-index: 1; padding: 1rem 1.5rem;">
+                <div *ngFor="let toast of announcements; let i=index;" class="mt-2">
+                    <app-toast [title]="toast.title" [date]="toast.date_posted" [message]="toast.content" (closeHit)="onAnnouncementDelete(toast,i)" > 
+                    </app-toast>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="community-posts col-md-9 col-sm-12">
+        
+        <div class="d-flex w-100 justify-content-between align-items-center px-2">
+            <h2 class="px-4 headings">Posts</h2>
+            <button class="btn btn-dark" (click)="onCreatePost('community')" *ngIf="sessionData.user_type != 'Employee'">Post in Community</button>
+        </div>
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-10" *ngFor="let post of communityPosts">
+                    <div class="post-content">
+                        <div class="post-container">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user"
+                                class="profile-photo-md pull-left">
+                            <div class="post-detail">
+                                <div class="user-info">
+                                    <h5 class="profile-link"> {{ post.user || "User 1" }} </h5>
+                                    <p class="text-muted">{{ post.postedDate || "23-05-2022" }}</p>
+                                </div>
+                                <div class="reaction">
+                                    <a class="btn text-green" (click)="like(post)"><i class="fa fa-thumbs-up"></i> {{post.likes_count}}</a>
+                                    <!-- <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a> -->
+                                </div>
+                                <div class="line-divider"></div>
+                                <div class="post-text">
+                                    <p> {{post.content || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis"}}
+                                        <!-- <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i> -->
+                                    </p>
+                                </div>
+
+                                <div class="line-divider"></div>
+
+                                
+                                <div class="post-comment" *ngFor="let comment of post.comments">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="profile-photo-sm">
+                                    <!-- https://bootdey.com/img/Content/avatar/avatar1.png -->
+                                    <div>
+                                        <span class="text-muted">{{comment.user}}</span>
+                                        <br>
+                                        <span class="text-muted" style="font-size: smaller;">{{comment.timestamp}}</span>
+                                        <p>
+                                            {{comment.content}}
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="post-comment ">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                        class="profile-photo-sm">
+                                    <input type="text" class="form-control" placeholder="Post a comment" name="comment-input" [(ngModel)]="post.comment">
+                                    <div class="d-flex w-25 justify-content-end align-items-center">
+                                        <button class="btn btn-dark w-75" (click)="postComment(post)">Post</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>

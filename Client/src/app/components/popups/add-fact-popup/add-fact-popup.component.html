@@ -1,0 +1,23 @@
+<div class="add-fact-popup-main">
+
+    <div class="top-bar d-flex justify-content-between">
+        <h2 class="headings">Create a new company fact</h2>
+        <img src="assets/Images/close-popup-icon.svg" width="24" alt="close" type="button" (click)="onClosePopup('close')" class="close-popup-icon">
+    </div>
+
+    <form>
+        <br>
+        <div class="form-group">
+            <label for="fact-content">Content</label>
+            <input type="text" class="form-control" id="fact-content" name="fact-content" [(ngModel)]="content">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+
+            
+        <br>
+        <div class="form-group w-100 d-flex justify-content-end">
+            <button class="btn btn-dark" type="button" (click)="addFact()">Create</button>
+        </div>
+    </form>
+
+</div>

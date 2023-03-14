@@ -1,0 +1,30 @@
+<div class="buy-reward-popup-main h-100 w-100">
+
+    <div class="top-bar d-flex justify-content-between">
+        <h2 class="headings">Product Details</h2>
+        <img src="assets/Images/close-popup-icon.svg" width="24" alt="close" type="button" (click)="onClosePopup('close')" class="close-popup-icon">
+    </div>
+
+    <div class="content row">
+        <div class="col-md-4 col-sm-12 p-0 d-flex justify-content-center align-items-center">
+            <img [src]="data.image" >
+        </div>
+        <div class="col-md-8 col-sm-12 prod-details">
+            <div class="d-flex flex-column justify-content-between h-100">
+                <div>
+                    <h4 class="headings">{{data.title}}</h4>
+                    <p class="subtitle">{{data.description}}</p>
+                </div>
+    
+                <div>
+                    <div>{{data.price | currency}}</div>
+                    <div class="w-100 d-flex justify-content-end">
+                        <button class="btn btn-dark" (click)="redeemRewards()">Confirm Purchase</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

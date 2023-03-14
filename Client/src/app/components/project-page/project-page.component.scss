@@ -1,0 +1,67 @@
+.project-page-main{
+    padding: 2rem;
+}
+
+hr{
+    width: 50%;
+    margin: 2rem auto;
+}
+
+button{
+    display: flex;
+    height: 2rem;
+    align-items: center;
+}
+
+.progress-report{
+    width: 100%;
+    padding: 2rem;
+    background-color: #EDEDF0;
+    border: none;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+
+    .progress-bar{
+        width: 100%;
+        height: 8px;
+        border: green solid 1px;
+        border-radius: 5px;
+
+        .progress{
+            height: 8px;
+            background-color: green;
+        }
+    }
+
+}
+.features-section{
+    .headings{
+        margin-top: 1.5rem;
+    }
+    .feature-card{
+        height: 3.5rem;
+        padding: 2%;
+        background-color: #EDEDF0;
+        box-shadow: 1px 1px 2px #999;
+        border-radius: 0;
+
+    }
+    .taskList{
+        margin: 1rem 0 1.5rem 0;
+        .card{
+            padding: 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+        }
+    }
+}
+
+.red{
+    color: red;
+}
+.yellow {
+    color: goldenrod;
+}
+.green {
+    color: darkgreen;
+}

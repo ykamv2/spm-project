@@ -1,0 +1,38 @@
+<div class="home-main p-5 row">
+
+    <div class="w-100 d-flex justify-content-center home-page-logo">
+        <img src="assets/EXAFOLD-Logo-Column.png" alt="">
+    </div>
+
+    <div class="col-md-6 col-sm-12 py-3 pl-5 d-flex flex-column align-items-center justify-content-center" id="login-section">
+        <div class="col-md-9 col-sm-12">
+            <h2 class="headings text-center w-100">
+                A one stop solution for all your workplace requirements
+            </h2>
+            <div class="row login-options">
+                <div class="col-md-6 col-sm-12">
+                    <h5>For Clients</h5>
+                    <p class="text-muted subtitle">
+                        Connect with your developers and manage your ongoing projects.
+                    </p>
+                    <button class="btn btn-dark" (click)="navigateToLogin('client')">
+                        Login
+                    </button>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h5>For Developers</h5>
+                    <p class="text-muted subtitle">
+                        Connect with clients and manage your ongoing projects.
+                    </p>
+                    <button class="btn btn-dark" (click)="navigateToLogin('user')">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12 d-flex justify-content-center">
+        <img src="assets/Images/landingpage_image.jpg" alt="" class="w-75">
+    </div>
+
+</div>

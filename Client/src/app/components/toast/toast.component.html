@@ -1,0 +1,14 @@
+<div class="toast-main w-100">
+    <div class="toast fade show w-100" style="z-index: 100" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
+    <div class="toast-header d-flex justify-content-between">
+        <div class="d-flex flex-column">
+            <strong class="me-auto">{{title}}</strong>
+            <small>{{date | date:'MM/dd/yy hh:mm'}}</small>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" (click)="closeHit.emit(true)" *ngIf="sessionData.user_type != 'Employee'"></button>
+    </div>
+    <div class="toast-body">
+        {{message}}
+    </div>
+    </div>
+</div>

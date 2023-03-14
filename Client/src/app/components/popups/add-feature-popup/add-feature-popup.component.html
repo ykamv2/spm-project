@@ -1,0 +1,30 @@
+<div class="add-feature-popup-main">
+
+    <div class="top-bar d-flex justify-content-between">
+        <h2 class="headings">Request A New Feature</h2>
+        <img src="assets/Images/close-popup-icon.svg" width="24" alt="close" type="button" (click)="onClosePopup()" class="close-popup-icon">
+    </div>
+
+    <form>
+            
+        <br>
+        <div class="form-group">
+            <label for="feature-title">Title</label>
+            <input type="text" class="form-control" id="feature-title" name="feature-title" [(ngModel)]="newFeatureForm.feature_title">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        
+        <!-- <br>
+        <div class="form-group">
+            <label for="feature-description">Description</label>
+            <textarea class="form-control" id="feature-description" rows="5" name="feature-description" [(ngModel)]="newFeatureForm.description"></textarea>
+        </div> -->
+            
+        <br>
+        <div class="form-group w-100 d-flex justify-content-end">
+            <button class="btn btn-dark" type="button" (click)="addFeature()">Create</button>
+        </div>
+    </form>
+
+
+</div>

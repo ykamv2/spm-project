@@ -1,0 +1,100 @@
+<div class="nav-bar-main w-100" *ngIf="isLoggedInBoolean" >
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+      <img src="assets/onlylogo_hexafold.png" height="48" alt="">
+  
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
+        aria-label="Toggle navigation">
+        <i class="fa fa-bars text-light"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
+          <!-- <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" [ngClass]="activeTab == 'home' ? 'active' : ''" (click)="changeTab('home')" aria-current="page" routerLink = "/">
+              <div>
+              </div>
+              Home
+            </a>
+          </li> -->
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" [ngClass]="activeTab == 'dashboard' ? 'active' : ''" (click)="changeTab('dashboard')" aria-current="page" routerLink = "/dashboard">
+              <div>
+                <!-- <i class="fas fa-home fa-lg mb-1"></i> -->
+              </div>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="sessionData.type == 'user'">
+            <a class="nav-link" [ngClass]="activeTab == 'chat' ? 'active' : ''" (click)="changeTab('chat')" routerLink = "/chat">
+              <div>
+                <!-- <i class="far fa-envelope fa-lg mb-1"></i> -->
+              </div>
+              Chat
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="sessionData.type == 'user'">
+            <a class="nav-link" aria-disabled="true" [ngClass]="activeTab == 'community' ? 'active' : ''" (click)="changeTab('community')" routerLink = "/community" >
+              <div>
+                <!-- <i class="far fa-envelope fa-lg mb-1"></i> -->
+              </div>
+              Community
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="sessionData.type == 'user'">
+            <a class="nav-link" [ngClass]="activeTab == 'training' ? 'active' : ''" (click)="changeTab('training')"  aria-current="page" routerLink = "training">
+              <div>
+                <!-- <i class="fas fa-home fa-lg mb-1"></i> -->
+              </div>
+              Training
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="sessionData.type == 'user'">
+            <a class="nav-link" [ngClass]="activeTab == 'rewards' ? 'active' : ''" (click)="changeTab('rewards')"  aria-current="page" routerLink = "rewards">
+              <div>
+                <!-- <i class="fas fa-home fa-lg mb-1"></i> -->
+              </div>
+              Rewards
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="sessionData.type == 'user'">
+            <a class="nav-link" [ngClass]="activeTab == 'recreational' ? 'active' : ''" (click)="changeTab('recreational')"  aria-current="page" routerLink = "recreational">
+              <div>
+                <!-- <i class="fas fa-home fa-lg mb-1"></i> -->
+              </div>
+              Recreational
+            </a>
+          </li>
+          
+        </ul>
+        <!-- Left links -->
+  
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
+          <li class="nav-item text-center mx-2 mx-lg-1 d-flex" *ngIf="user$ | async as user">
+            <a class="navbar-brand" (click)="changeTab('dashboard')" aria-current="page" routerLink = "/dashboard">{{user.email}}</a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <ng-container *ngIf="authService.currentUser$ | async as user">
+              <button class="btn btn-light" (click)="logout()">
+                Logout
+            </button>
+            </ng-container>
+            
+          </li>
+        </ul>
+  
+        
+      </div>
+    </div>
+  </nav>
+
+
+</div>

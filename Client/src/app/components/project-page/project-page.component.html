@@ -1,0 +1,108 @@
+<div class="project-page-main container">
+
+    <h2 class="headings">
+        {{projectData.project_title}}
+    </h2>
+
+    <p class="subtitle">
+        {{projectData.description}}
+    </p>
+
+    <div class="progress-report">
+        <h4 class="headings">Progress</h4>
+        <p class="subtitle">The project will soon be completed</p>
+        <div class="progress-bar">
+            <div class="progress" id="progress"  [ngStyle]="{'width': projectData.progress +'%'}"></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="features-section">
+        <h4 class="headings">Features</h4>
+
+        <h6 class="headings">Current Features</h6>
+        <div class="current-features">
+            <div *ngFor="let feature of projectData.features; let i=index;" class="m-2">
+                <div class="card w-100 d-flex flex-row feature-card" *ngIf="feature.manager_acceptance && feature.client_acceptance" (click)="showContent(i)">
+                        <div class="w-50 d-flex align-items-center">{{feature.feature_title}}</div>
+                        <div class="w-25 d-flex align-items-center" *ngIf="sessionData.type == 'client' || sessionData.user_type == 'Super User'">{{feature.cost | currency}}</div>
+                        <div class="w-25 d-flex justify-content-end align-items-center">
+                            <img src="assets/Images/green-tick.svg" height="16" alt="done" *ngIf="feature.status == 'done'">
+                        </div>
+                </div>
+
+                <div *ngIf="feature.showContent" class="taskList">
+                    <button class="btn btn-dark" (click)="onAddTaskPopup(feature)" *ngIf="sessionData.user_type == 'Manager' || sessionData.user_type == 'Super User'">Add Task</button>
+                    <div  *ngFor="let task of feature.tasks" (click)="onNavigateToTask(feature, task)">
+                        
+                        <div class="card w-100 d-flex flex-row">
+                            <div class="w-50 d-flex align-items-center">{{task.task_title}}</div>
+                            <div class="w-25 d-flex align-items-center">{{task.status}}</div>
+                            <div class="w-25 d-flex align-items-center" [ngClass]="task.priority == 'High' ? 'red' : (task.priority == 'Medium' ? 'yellow' : 'green') ">{{task.priority}}</div>
+                            
+                    </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="d-flex w-100 justify-content-center" *ngIf="projectData.features.length == 0">
+            No Features Available
+        </div>
+
+        <div class="d-flex justify-content-between align-items-end" *ngIf="sessionData.user_type != 'Employee'">
+            <h6 class="headings" >New Features</h6>
+            <button class="btn btn-dark" (click)="openAddFeaturePopup()" *ngIf="sessionData.type == 'client'">Add New Feature &nbsp;&nbsp; +</button>
+        </div>
+
+
+        <div class="new-features" *ngIf="sessionData.user_type != 'Employee'">
+            <div *ngFor="let feature of projectData.features" class="m-2">
+                <div class="card w-100 d-flex flex-row feature-card" *ngIf="feature.manager_acceptance == false || feature.client_acceptance == false">
+                        <div class="w-50 d-flex align-items-center">{{feature.feature_title}}</div>
+                        <div class="w-25 d-flex align-items-center">{{feature.cost | currency}}</div>
+                        <div class="w-25 d-flex justify-content-end align-items-center" *ngIf="sessionData.type == 'client' || sessionData.user_type == 'Super User'">
+                            <button class="btn btn-secondary m-2" (click)="onFeatureReject(feature)">Reject</button>
+                            <button class="btn btn-dark m-2" (click)="onFeatureAccept(feature)">Accept</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="features-comments" *ngIf="sessionData.user_type != 'Employee'">
+
+            <h5 class="headings">Troubleshooting</h5>
+            <div class="new-comment">
+                <p class="subtitle">Add Comment</p>
+                <textarea name="pcomment" id="" class="w-100 text-muted" rows="5" draggable="false" [(ngModel)]="pcomment"></textarea>
+                <div class="d-flex justify-content-end w-100">
+                    <button class="btn btn-dark" (click)="postComment()">Post</button>
+                </div>
+            </div>
+
+            <h6 class="headings">Comments</h6>
+            <div class="comments">
+                <div class="card d-flex flex-row bg-secondary text-white my-2" *ngFor="let comment of projectData.comments">
+                    <div class="comment-logo d-flex justify-content-center align-items-center">
+                        <img src="assets/Images/avatar.png" height="32" alt="" class="avatar-img">
+                    </div>
+                    <div class="comment-body d-flex flex-column">
+                        <span class="comment-user-name">{{comment.email}}</span> 
+                        <span class="comment-date">
+                            {{comment.timestamp | date:"dd-MM-YYYY HH:mm:SS"}}
+                        </span>
+                        <span class="comment-description">{{comment.content}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

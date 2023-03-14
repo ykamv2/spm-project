@@ -1,0 +1,28 @@
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 5vh;
+}
+h1{
+    margin-bottom: 20px;
+}
+.form-container{
+    overflow-y: scroll;
+    height: 70vh;
+    margin-top: 100px;
+    padding: 64px;
+    width: 50%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+button{
+    margin-top: 20px;
+}
+
+

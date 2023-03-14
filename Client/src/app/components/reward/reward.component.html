@@ -1,0 +1,40 @@
+<div class="reward-main container">
+
+  <div class="top-bar">
+    <div class="w-100 d-flex justify-content-between">
+      <h2 class="headings">Redeem Points</h2>
+      <button class="btn btn-dark" (click)="onAddReward()" *ngIf="sessionData.user_type == 'Super User'">Create Reward &nbsp; +</button>
+    </div>
+    <h5 class="subtitle">Balance : {{userData.reward_points}}</h5>
+  </div>
+
+  <div class="items row">
+    <div class="wrapper col-md-6 col-sm-12" *ngFor="let item of rewardsList">
+      <div class="inner-wrapper row h-100 w-100">
+        <div class="product-img col-md-4 col-sm-12 p-0 d-flex justify-content-center h-100">
+          <img [src]="item.image" >
+        </div>
+
+        <div class="product-info col-md-8 col-sm-12">
+          <div class="d-flex flex-column justify-content-between h-100">
+            
+            <div class="product-text">
+              <h1>{{item.title}}</h1>
+              <h2>by Hexafold</h2>
+            </div>
+  
+            <div class="product-price-btn">
+              <p class="product-description">{{item.description}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <p style="margin-top: 10px;" class="product-points"><span>{{item.points}} Points</span></p>
+                <button type="button" class="btn btn-dark" (click)="openBuyRewardPopup(item)" [disabled]="item.points > userData.reward_points">buy now</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

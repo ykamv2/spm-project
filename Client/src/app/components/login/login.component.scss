@@ -1,0 +1,28 @@
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.form-container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 300px;
+    margin: auto;
+    height: 50vh;
+    background: #eceff1;
+    padding: 48px;
+    border-radius: 16px;
+}
+
+mat-form-field{
+    margin-bottom: 20px;
+}
+.form-container mat-form-field {
+    width: 100%;
+}
+
+form{
+    margin-top: 20px;
+}

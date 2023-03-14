@@ -1,0 +1,39 @@
+<div class="recreational-main container">
+
+    <h2 class="headings my-3">
+        Recreational Activities
+    </h2>
+
+    <br>
+
+
+    <div class="activity-body row card w-100">
+
+        <div class="activity-index col-md-3 col-sm-0">
+            <div class="tab" *ngFor="let activity of activitiesList; let i=index;" (click)="changeActivity(i)" [ngClass]="{'active-tab' : activeTab == i}">
+                {{activity}}
+            </div>
+        </div>
+
+        <div class="activity-content-section col-md-9 col-sm-12">
+            
+            <div class="activity-content d-flex flex-column justify-content-center align-items-center" *ngIf="activeTab == 0">
+                <button class="btn btn-dark" (click)="factGenerator()" [disabled]="disableBtnBoolean">
+                    Click me
+                </button>
+                <button class="btn btn-dark my-2" (click)="addFact()" [disabled]="disableBtnBoolean" *ngIf="sessionData.user_type != 'Employee'">
+                    Create a Fact
+                </button>
+            </div>
+            <!-- <div class="activity-content" *ngIf="activeTab == 1">
+                Ackinator
+            </div> -->
+
+        </div>
+
+
+    </div>
+
+
+
+</div>

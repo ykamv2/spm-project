@@ -1,0 +1,45 @@
+<div class="create-rewards-popup-main">
+
+    <div class="top-bar d-flex justify-content-between">
+        <h2 class="headings">Add a New Reward</h2>
+        <img src="assets/Images/close-popup-icon.svg" width="24" alt="close" type="button" (click)="onClosePopup('cancel')" class="close-popup-icon">
+    </div>
+
+    <form>
+
+        <br>
+        <div class="form-group">
+            <label for="reward-title">Title</label>
+            <input type="text" class="form-control" id="reward-title" name="reward-title" [(ngModel)]="rewardForm.title">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+
+        <br>
+        <div class="form-group">
+            <label for="reward-description">Description</label>
+            <textarea class="form-control" id="reward-description" rows="5" name="reward-description" [(ngModel)]="rewardForm.description"></textarea>
+        </div>
+
+
+        <br>
+        <div class="form-group">
+            <label for="reward-points">Points</label>
+            <input type="number" class="form-control" id="reward-points" name="reward-points" [(ngModel)]="rewardForm.points" [min]="0">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+
+        <br>
+        <div class="form-group">
+            <label for="reward-image">Image Url</label>
+            <input type="text" class="form-control" id="reward-image" name="reward-image" [(ngModel)]="rewardForm.image">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+          
+        <br>
+        <div class="form-group w-100 d-flex justify-content-end">
+            <button class="btn btn-dark" type="button" (click)="addreward()">Create</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,37 @@
+<div class="add-showcase-post-main">
+
+    <div class="top-bar d-flex justify-content-between">
+        <h2 class="headings">Add New Post</h2>
+        <img src="assets/Images/close-popup-icon.svg" width="24" alt="close" type="button" (click)="onClosePopup()" class="close-popup-icon">
+    </div>
+
+
+    <form>
+            
+        <br>
+        <div class="form-group">
+            <label for="showcase-title">Title</label>
+            <input type="text" class="form-control" id="showcase-title" name="showcase-title" [(ngModel)]="showcasePostForm.title">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        
+        <br>
+        <div class="form-group">
+            <label for="showcase-content">Content</label>
+            <textarea class="form-control" id="showcase-content" rows="10" name="showcase-content" [(ngModel)]="showcasePostForm.content"></textarea>
+        </div>
+        
+        <br>
+        <div class="form-group">
+            <label for="showcase-url">Cover Image Link</label>
+            <input type="text" class="form-control" id="showcase-url" name="showcase-url" [(ngModel)]="showcasePostForm.img">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+
+        <br>
+        <div class="form-group w-100 d-flex justify-content-end">
+            <button class="btn btn-dark" type="button" (click)="createShowcasePost()">Create</button>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="add-community-post-main">
+
+    <div class="top-bar d-flex justify-content-between">
+        <h2 class="headings">Create {{ type | titlecase }} Post</h2>
+        <img src="assets/Images/close-popup-icon.svg" width="24" alt="close" type="button" (click)="onClosePopup('close')" class="close-popup-icon">
+    </div>
+
+    <form>
+        <br *ngIf="type == 'announcement'">
+        <div class="form-group" *ngIf="type == 'announcement'">
+            <label for="post-title">Title</label>
+            <input type="text" class="form-control" id="post-title" name="post-title" [(ngModel)]="postForm.title">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+
+        <br>
+        <div class="form-group">
+            <label for="post-content">Content</label>
+            <textarea class="form-control" id="post-content" rows="5" name="post-descricontentption" [(ngModel)]="postForm.content"></textarea>
+        </div>
+
+        <!-- <br>
+        <div class="form-group">
+            <label for="post-deadline">Deadline</label>
+            <input type="date" class="form-control" id="post-deadline" name="post-deadline" [(ngModel)]="postForm.deadline" >
+        </div> -->
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        
+            
+        <br>
+        <div class="form-group w-100 d-flex justify-content-end">
+            <button class="btn btn-dark" type="button" (click)="addPost()">Create</button>
+        </div>
+    </form>
+
+</div>

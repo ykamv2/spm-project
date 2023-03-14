@@ -1,0 +1,93 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+html,body{
+    font-family: Charlie Display, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+    overflow-x: hidden;
+    ::-webkit-scrollbar { width: 0 }
+    overflow: -moz-scrollbars-none; 
+    -ms-overflow-style: none; 
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.headings {
+    color:#253858;
+}
+.subtitle{
+    color:#42526E;
+}
+
+
+.avatar-img{
+    border-radius: 50%;
+}
+
+.comments{
+    .card{
+        padding: 0.5rem;
+        .comment-logo{
+            width: 54px;
+        }
+        .comment-body{
+            padding: 0 1rem;
+            width: calc(100% - 54px);
+            .comment-user-name{
+                font-size: 0.75rem;
+            }
+            .comment-date{
+                font-size: 0.6rem;
+            }
+            .comment-description{
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+textarea {
+    resize: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+.dashboard-main, .community-main, .project-page-main, .training-home-main, .training-course-main, .reward-main, .task-page-main, .recreational-main{
+    margin-top: 64px;
+}
+
+.form-check-input:checked {
+    background-color: #212529;
+    border-color: #212529;
+}
+
+img.close-popup-icon{
+    filter: opacity(0.3) drop-shadow(0 0 0 black);
+}
+
+.scrollable {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.bottomSnackbar{
+    bottom: 0;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%) !important;
+}
+.factSnackbar{
+    bottom: 50%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    transform: translateY(-10%) !important;
+    height: 10%;
+    width: 20%;
+}
+.mat-snack-bar-container{
+    display: flex !important; 
+    align-items: center !important;
+}

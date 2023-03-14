@@ -1,0 +1,60 @@
+<div class="create-project-popup-main">
+
+    <div class="top-bar d-flex justify-content-between">
+        <h2 class="headings">Add New Project</h2>
+        <img src="assets/Images/close-popup-icon.svg" width="24" alt="close" type="button" (click)="onClosePopup()" class="close-popup-icon">
+    </div>
+
+    <div class="content">
+        <form>
+            
+            <br>
+            <div class="form-group">
+                <label for="project-title">Title</label>
+                <input type="text" class="form-control" id="project-title" name="project-title" [(ngModel)]="projectForm.project_title">
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+            
+            <br>
+            <div class="form-group">
+                <label for="project-description">Description</label>
+                <textarea class="form-control" id="project-description" rows="5" name="project-description" [(ngModel)]="projectForm.description"></textarea>
+            </div>
+            
+            <br>
+            <div class="form-group w-50">
+                <label>Clients</label>
+                <div class="checkbox-group">
+                    <div class="form-check mx-2" *ngFor="let cl of ClientList; let i=index;">
+                        <input class="form-check-input" type="checkbox" id="projectClient-{{i}}" name="projectClient-{{i}}" [(ngModel)]="projectForm.clients[i].assigned">
+                        <label class="form-check-label" for="projectClient-{{i}}">{{cl.name}}</label>
+                    </div>
+                </div>
+            </div>
+            
+            <br>
+            <div class="form-group w-50">
+                <label>Employees</label>
+                <div class="checkbox-group">
+                    <div class="form-check mx-2" *ngFor="let user of UserList; let i=index;">
+                        <input class="form-check-input" type="checkbox" value="{{i}}" id="projectEmp-{{i}}" name="projectEmp-{{i}}" [(ngModel)]="projectForm.users[i].assigned">
+                        <label class="form-check-label" for="projectEmp-{{i}}">{{user.name}}</label>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            <br>
+            <div class="form-group w-100 d-flex justify-content-end">
+                <button class="btn btn-dark" type="button" (click)="createProject()">Create</button>
+            </div>
+        </form>
+
+
+    </div>
+
+
+
+
+</div>

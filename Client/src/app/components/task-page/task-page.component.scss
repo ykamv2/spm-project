@@ -1,0 +1,37 @@
+.task-page-main{
+    padding: 1rem;
+    height: 90vh;
+    overflow-x: hidden;
+}
+.task-body{
+    // height: 100%;
+    .task-content{
+        height: 100%;
+        .description-card{
+            margin-right: 2rem;
+            padding: 2rem;
+        }
+    }
+    .task-details{
+        border-left: 1px solid #ddd;
+
+        .card {
+            padding: 1rem;
+        }
+    }
+}
+
+.red{
+    color: red;
+}
+.yellow {
+    color: goldenrod;
+}
+.green {
+    color: darkgreen;
+}
+
+.subheading{
+    font-weight: bolder;
+    font-size: 1.05rem;
+}

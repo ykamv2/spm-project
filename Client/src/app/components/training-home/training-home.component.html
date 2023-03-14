@@ -1,0 +1,184 @@
+<div class="training-home-main">
+
+    <div class="container">
+        <h2 class="headings">
+            Training
+        </h2>
+
+        <div class="training-static card">
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    <h4 class="headings">Employee training</h4>
+                    <br><br>
+                    <p class="subtitle">
+                        <i>A company is like a river, and its employees are the water of it,
+                            <br>The river stays healthy as long as it is moving.
+                        </i>  
+                        <br><br>
+                        <span>
+                            Help your Employees move, by helping them learn new things.
+                            <br>
+                            And support the company to grow.
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-12 d-flex justify-content-center">
+                    <img src="assets/Images/trainings-img.jpg" width="300" alt="">
+                </div>
+            </div>
+        </div>
+        
+        <div class="create-assign-trainings" *ngIf="sessionData.user_type != 'Employee'">
+            
+            <div class="createNewTrainingSection">
+                <div [collapse]="createNewTraining" > 
+                    <!-- <button class="btn btn-dark" id="createNewTrainingButton" (click)="openCollapsedSection('cn')"> Create New Training &nbsp; + </button>  -->
+                    <button class="btn btn-dark" id="createNewTrainingButton"> Create New Training &nbsp; + </button> 
+                </div>
+                <div collapseContent  #createNewTraining="collapseContent" class="ca-content create-training" >
+                  <div class="card card-body">
+                    <h5 class="card-title">New Training</h5>
+                    <form>
+                        <br>
+                        <div class="form-group">
+                            <label for="training-title">Title</label>
+                            <input type="text" class="form-control" id="training-title" name="training-title" [(ngModel)]="newTrainingForm.title">
+                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="training-reward">Reward Points</label>
+                            <input type="number" class="form-control" id="training-reward" min="0" name="training-reward" [(ngModel)]="newTrainingForm.reward">
+                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="training-content">Content</label>
+                            <textarea class="form-control" id="training-content" rows="5" name="training-content" [(ngModel)]="newTrainingForm.content"></textarea>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Youtube URLs</label>
+                            <div *ngFor="let url of newTrainingForm.urls; let i=index;" class="url-inputs d-flex align-items-center">
+                                <input type="text" class="form-control" id="training-url-{{i}}" min="0" name="training--url-{{i}}" [(ngModel)]="newTrainingForm.urls[i]">
+                                <img src="assets/Images/minus-icon.svg" type="button" alt="Remove" height="20" (click)="removeNewTrainingUrl(i)" class="remove-icon">
+                            </div>
+                            <br *ngIf="newTrainingForm.urls.length==0">
+                            <img src="assets/Images/plus-icon.png" (click)="addNewTrainingUrl()" height="20" type="button" alt="Add">
+                        </div>
+                        <br>
+                        <div class="form-group w-100 d-flex justify-content-end">
+                            <button class="btn btn-secondary" type="button" (click)="resetNewTrainingData()" style="margin-right:1rem">Reset</button>
+                            <button class="btn btn-dark" type="button" (click)="createTraining()">Create</button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+            
+            <br>
+    
+            <div class="assugnTrainingSection">
+                <div [collapse]="assignNewTraining" > 
+                    <!-- <button class="btn btn-dark" id="assignTrainingButton" (click)="openCollapsedSection('an')"> Assign Training </button>  -->
+                    <button class="btn btn-dark" id="assignTrainingButton"> Assign Training </button> 
+                </div>
+                <div collapseContent  #assignNewTraining="collapseContent"  class="ca-content assign-training">
+                    <div class="card card-body">
+                        <h5 class="card-title">Assign Training</h5>
+                        <form>
+                            
+                            <br>
+                            <div class="form-group">
+                                <label for="training-title">Training</label>
+                                <select class="form-select" aria-label="Default select example" name="assigntrainingd" [(ngModel)]="assignTrainingForm.training_id">
+                                    <option *ngFor="let course of courseList" value="{{course['_id']}}">{{course.title}}</option>
+                                </select>
+                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Employee</label> 
+                                <input type="checkbox" class="form-check-input" id="select-all-emp" name="select-all-emp" (click)="onSelectAllCheckBox($event)">
+                                
+                                <div class="form-check mx-2" *ngFor="let emp of employeeList; let i=index;">
+                                    <input class="form-check-input" type="checkbox" value="{{emp.id}}" id="assignTrainingEmployee-{{emp.id}}" name="assignTrainingEmployee-{{emp.id}}" [(ngModel)]="assignTrainingForm.emp_id[i].assigned" (change)="onCheckBoxChange($event)">
+                                    <label class="form-check-label" for="assignTrainingEmployee-{{emp.id}}">{{emp.name}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="assign-training-deadline">Deadline</label>
+                                <input type="date" class="form-control" id="assign-training-deadline" name="assign-training-deadline" [(ngModel)]="assignTrainingForm.deadline" [min]="todaysDate" [value]="todaysDate">
+                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            </div>
+    
+    
+                            
+                            <br>
+                            <div class="form-group w-100 d-flex justify-content-end">
+                                <!-- <button class="btn btn-secondary" type="button" (click)="resetNewTrainingData()" style="margin-right:1rem">Cancel</button> -->
+                                <button class="btn btn-dark" type="button" (click)="assignTraining()">Assign</button>
+                            </div>
+                        </form>
+                      </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    <div class="container" style="margin-top: 3rem;">
+        <h4 class="headings">
+            Assigned Trainings
+        </h4>
+    </div>
+
+    <div class="employee-trainings" *ngIf="trainingData.length != 0">
+
+        <div class="training-navbar w-100 d-flex justify-content-center bg-white">
+            <div class="tab substitle" (click)="changeTrainingTab('in-progress')" [ngStyle]="currentTrainingTab=='in-progress' ? {'border-bottom':'5px solid #343a40'} : {'border-bottom':'0px'}">In Progress</div>
+            <div class="tab substitle" (click)="changeTrainingTab('completed')" [ngStyle]="currentTrainingTab=='completed' ? {'border-bottom':'5px solid #343a40'} : {'border-bottom':'0px'}">Completed</div>
+        </div>
+
+        <div class="trainings-list">
+            <div *ngFor="let course of trainingData" class="d-flex flex-column align-items-center w-100" >
+                <div class="card col-md-9 col-sm-10" *ngIf="currentTrainingTab == 'in-progress' ? (course.status == 'pending') : (course.status == 'done')" (click)="openTraining(course)">
+                    <div class="row w-100 m-0">
+                        <div class="training-image col-md-3 col-sm-12 d-flex justify-content-center">
+                            <img src="assets/Images/training-dummy-img.jpg" alt="">
+                        </div>
+                        <div class="training-description col-md-9 col-sm-12 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="headings">{{course.title || "Course"}}</h5>
+                                    <div class="reward">{{course.reward || "NA"}}</div>
+                                </div>
+                                <p class="subtitle">{{course.content || ""}}</p>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span>Modules : {{course.urls.length || "NA"}}</span>
+                                <span>Deadline : {{course.deadline | date: 'yyyy/MM/dd'}}</span>
+                                <span *ngIf="course.status == 'done'">
+                                    <img src="assets/Images/green-tick.svg" height="16" alt="done" >
+                                    Great Work! You have completed the assigned training!
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="employee-trainings d-flex justify-content-center align-items-center" *ngIf="trainingData.length == 0">
+        No Trainings Assigned
+    </div>
+
+    
+
+</div>

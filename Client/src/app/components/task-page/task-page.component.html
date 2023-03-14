@@ -1,0 +1,76 @@
+<div class="task-page-main container">
+
+    <h2 class="headings my-3">
+        {{projectData.project_title}}
+    </h2>
+
+    <p class="breadcrumbs text-muted">
+        {{projectData.project_title}} / {{featureData.feature_title}} / {{taskData.task_title}}
+    </p>
+
+    <div class="task-body row">
+        <div class="task-content col-md-9 col-sm-12">
+
+            <h4 class="headings">{{taskData.task_title}}</h4>
+            <h6 class="text-muted subheading">{{taskData["_id"]}}</h6>
+
+            <div class="description-card card ">
+                <p class="subtitle">
+                    {{taskData.description}}
+                </p>
+            </div>
+
+        </div>
+        <div class="task-details col-md-3 col-sm-12">
+            <select name="status" id="" class="form-select w-50" [(ngModel)]="taskData.status" (change)="onTaskStatusUpdate()" [disabled]="sessionData.type == 'client'">
+                <option value="{{status}}" *ngFor="let status of statusList">{{status}}</option>
+            </select>
+
+            <hr>
+
+            <div class="card">
+                <h4 class="headings card-title">Details</h4>
+
+                <br>
+                <div class="form-group">
+                    <span for="" class="card-text subheading">Assignee</span>
+                    <select name="assignedEmployee" id="" class="form-select" [(ngModel)]="taskData.assignedEmployee" (change)="onTaskAssigneeUpdate()" [disabled]="sessionData.type == 'client'">
+                        <option value="{{emp.email}}" *ngFor="let emp of employeeList">{{emp.name}}</option>
+                    </select>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <span class="card-text subheading">Start Date</span><br>
+                    <span>{{taskData.startDateTime | date:"dd-MM-YYYY"}}</span>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <span class="card-text subheading">Deadline</span><br>
+                    <span>{{taskData.deadline | date:"dd-MM-YYYY"}}</span>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <span class="card-text subheading">Priority</span><br>
+                    <span [ngClass]="taskData.priority == 'High' ? 'red' : (taskData.priority == 'Medium' ? 'yellow' : 'green') ">{{taskData.priority}}</span>
+                </div>
+                
+                <br>
+                <div class="form-group" *ngif="sessionData.type != 'client'">
+                    <span class="card-text subheading">Reward</span><br>
+                    <span>{{taskData.reward_points}}</span>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,21 @@
+<div class="features-cost-main d-flex flex-column justify-content-around">
+
+    <div class="d-flex justify-content-between w-100">
+        <h2 class="headings">Feature Costing</h2>
+        <img src="assets/Images/close-popup-icon.svg" width="24" alt="close" type="button" (click)="onClosePopup()" class="close-popup-icon">
+
+    </div>
+    
+    <div>
+        <p class="subtitle">
+            {{feature.feature_title}}
+        </p>
+    
+        <input type="text" class="form-control" name="cost" [(ngModel)]="cost">
+    </div>
+
+    <div class="d-flex w-100 justify-content-end my-2">
+        <button class="btn btn-dark" (click)="accept()">Accept</button>
+    </div>
+
+</div>
